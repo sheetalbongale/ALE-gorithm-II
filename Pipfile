@@ -1,0 +1,27 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "*"
+
+[packages]
+pandas = "*"
+plotly = "*"
+flask = "*"
+pymysql = "*"
+nb-black = "*"
+unicorn = "*"
+sqlalchemy = "*"
+flask-sqlalchemy = "*"
+scikit-learn = "*"
+scikit-surprise = "*"
+dask = "*"
+matplotlib = "*"
+
+[requires]
+python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true

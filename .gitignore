@@ -127,3 +127,21 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+.DS_Store
+.vscode/
+
+# Unwanted/large files
+reviews.csv
+config.py
+clean_reviews.csv
+resources/
+final_merged_data.csv
+brewery_address_final.csv
+final_merged_data_renamed.csv
+final_beers.csv
+beer_reviews.csv
+
+# Configuration files
+db/config.py
+
