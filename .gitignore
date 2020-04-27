@@ -141,6 +141,14 @@ brewery_address_final.csv
 final_merged_data_renamed.csv
 final_beers.csv
 beer_reviews.csv
+beer_reviews_clean_500.csv
+beers.csv
+beer_reviews_clean.csv
+clean_reviews_reduced.csv
+clean_reviews_sm.csv
+df_predict_500.csv
+reviews_cleaned_reduced_500.csv
+
 
 # Configuration files
 db/config.py
