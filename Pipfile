@@ -16,9 +16,9 @@ unicorn = "*"
 sqlalchemy = "*"
 flask-sqlalchemy = "*"
 scikit-learn = "*"
-scikit-surprise = "*"
 dask = "*"
 matplotlib = "*"
+scikit-surprise = "*"
 
 [requires]
 python_version = "3.8"
