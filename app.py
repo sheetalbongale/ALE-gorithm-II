@@ -244,6 +244,18 @@ def nearest_neighbors(beer_name):
     # return json of the dataframe
     return Response(df.to_json(orient = "records"), mimetype='application/json')
 
+@app.route("/predict", methods=["POST"])
+def predict():
+    data_dict = request.get_json()
+
+    username = data_dict["username"]
+    beer_name = data_dict["beer"]
+    beer_raw_id = get_beer_raw_id(beer_name)
+    predict = algo.predict(username, beer_raw_id)
+    df_predict = pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details'])
+    return Response(df_predict.to_json(orient = "records"), mimetype='application/json')
+    
+
 ################################################################
 #                           Main                               #
 ################################################################
