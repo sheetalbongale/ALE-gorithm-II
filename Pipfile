@@ -19,6 +19,9 @@ scikit-learn = "*"
 dask = "*"
 matplotlib = "*"
 scikit-surprise = "*"
+nltk = "*"
+ipykernel = "*"
+pyldavis = "*"
 
 [requires]
 python_version = "3.8"
