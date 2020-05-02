@@ -155,4 +155,5 @@ reviews_NLTK.csv
 
 # Configuration files
 db/config.py
+config.py
 
