@@ -231,10 +231,16 @@ def breweries():
 #                       recommender model routes                #
 # --------------------------------------------------------------#
 
-@app.route("/test.html")
+# search route
+@app.route("/search.html")
 def recommender_selector():
     beers = beers_df['name'].tolist()
-    return render_template("test.html", beers = beers)
+    return render_template("search.html", beers = beers)
+
+# @app.route("/test.html")
+# def recommender_selector():
+#     beers = beers_df['name'].tolist()
+#     return render_template("test.html", beers = beers)
 
 @app.route("/recommendations/<beer_name>")
 def nearest_neighbors(beer_name):
