@@ -8,10 +8,6 @@ import json
 import pandas as pd
 from flask import Response
 import os
-from surprise import Dataset
-from surprise import Reader
-from surprise import KNNBasic
-from surprise.model_selection import train_test_split
 from surprise import dump
 
 # Path to dump file and name
