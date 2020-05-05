@@ -149,7 +149,7 @@ clean_reviews_reduced.csv
 clean_reviews_sm.csv
 df_predict_500.csv
 reviews_cleaned_reduced_500.csv
-
+barrys_beers.csv
 reviews_NLTK.csv
 dump_knn_pb_barryspicksdump_file
 dump_svd_barryspicksdump_file
