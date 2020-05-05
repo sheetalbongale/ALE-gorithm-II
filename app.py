@@ -94,6 +94,10 @@ def home():
 def index():
     return render_template("index.html")
 
+@app.errorhandler(404)
+def invalid_route(e):
+    return render_template('404.html')
+
 # --------------------------------------------------------------#
 #                       recommender routes                     #
 # --------------------------------------------------------------#
