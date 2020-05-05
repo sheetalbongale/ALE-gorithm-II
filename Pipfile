@@ -16,12 +16,9 @@ unicorn = "*"
 sqlalchemy = "*"
 flask-sqlalchemy = "*"
 scikit-learn = "*"
-dask = "*"
-matplotlib = "*"
 scikit-surprise = "*"
 nltk = "*"
-ipykernel = "*"
-pyldavis = "*"
+numpy = "*"
 
 [requires]
 python_version = "3.8"

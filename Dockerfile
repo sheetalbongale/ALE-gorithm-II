@@ -6,8 +6,8 @@ FROM python:3.8
 ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
-RUN pip install Flask gunicorn sqlalchemy pandas pymysql scikit-surprise scikit-learn
-# Install production dependencies.
+RUN pip install Flask gunicorn sqlalchemy pandas numpy pymysql scikit-surprise numpy
+# Install production dependencies
 RUN pip install pipenv
 
 # Run the web service on container startup. Here we use the gunicorn
