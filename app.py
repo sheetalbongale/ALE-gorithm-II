@@ -94,6 +94,10 @@ def home():
 def index():
     return render_template("index.html")
 
+@app.errorhandler(404)
+def invalid_route(e):
+    return render_template('404.html')
+
 # --------------------------------------------------------------#
 #                       recommender routes                     #
 # --------------------------------------------------------------#
@@ -237,6 +241,7 @@ def recommender_selector():
     beers.sort()
     beers.insert(0, "Choose a Beer")
     return render_template("search.html", beers = beers)
+
 
 
 @app.route("/neighbors/<beer_name>")
