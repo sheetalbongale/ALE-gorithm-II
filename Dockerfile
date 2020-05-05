@@ -6,7 +6,7 @@ FROM python:3.8
 ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
-RUN pip install Flask gunicorn sqlalchemy pandas numpy pymysql scikit-surprise numpy
+RUN pip install Flask gunicorn sqlalchemy pandas pymysql numpy scikit-surprise
 # Install production dependencies
 RUN pip install pipenv
 
