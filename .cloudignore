@@ -6,6 +6,7 @@ __pycache__/
 # C extensions
 *.so
 
+
 # Distribution / packaging
 .Python
 build/
@@ -132,28 +133,10 @@ dmypy.json
 .vscode/
 
 # Unwanted/large files
-reviews.csv
-config.py
-clean_reviews.csv
-resources/
-final_merged_data.csv
-brewery_address_final.csv
-final_merged_data_renamed.csv
-final_beers.csv
-beer_reviews.csv
-
-beer_reviews_clean_500.csv
-beers.csv
-beer_reviews_clean.csv
-clean_reviews_reduced.csv
-clean_reviews_sm.csv
-df_predict_500.csv
-reviews_cleaned_reduced_500.csv
-
-reviews_NLTK.csv
+csv/
+notebooks/
 dump_knn_pb_barryspicksdump_file
 dump_svd_barryspicksdump_file
-
 # Configuration files
 db/config.py
-
+config.py

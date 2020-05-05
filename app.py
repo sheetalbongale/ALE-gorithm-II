@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, jsonify
 import sqlalchemy as sql
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
-import config
 import pymysql
 import json
 import pandas as pd
@@ -67,19 +66,13 @@ def get_beer_recc_df (beer_raw_id):
     return beer_reccomendations_df
 
 ################################################################
-#               Flask Setup                                    #
+#               Flask Setup and Database Connection            #
 ################################################################
 app = Flask(__name__)
 
-USER = "root"
-PASSWORD = config.password
-HOST = "127.0.0.1"
-PORT = "3306"
-DATABASE = "alegorithm_db"
+SQLALCHEMY_DATABASE_URL = os.getenv("DB_CONN")
 
-CONN = f"mysql+pymysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
-
-sql_engine = sql.create_engine(CONN)
+sql_engine = sql.create_engine(SQLALCHEMY_DATABASE_URL)
 
 ################################################################
 #                        Flask Routes                          #
