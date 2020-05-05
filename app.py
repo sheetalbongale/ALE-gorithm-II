@@ -12,7 +12,7 @@ from surprise import dump
 
 # Path to dump file and name
 dumpfile = os.path.join('./data/dump/dump_knn_pearsonbaseline_500dump_file')
-beer_pickel_path = os.path.join('./data/dump/beer.pkl')
+beer_pickel_path = os.path.join('./data/dump/beer_final.pkl')
 
 # Load dump files
 predictions,algo = dump.load(dumpfile)
@@ -21,12 +21,13 @@ beers_df = pd.read_pickle(beer_pickel_path)
 # Create the trainset from the algo
 trainset = algo.trainset
 
-def get_beer_name (beer_raw_id):
-    beer_name = beers_df.loc[beers_df.beer_id==beer_raw_id,'name'].values[0]
-    return beer_name
+
+def get_beer_brewery (beer_raw_id):
+    beer_brewery = beers_df.loc[beers_df.beer_id==beer_raw_id,'beer_brewery'].values[0]
+    return beer_brewery
 
 def get_beer_raw_id (beer_name):
-    beer_raw_id = beers_df.loc[beers_df.name==beer_name,'beer_id'].values[0]
+    beer_raw_id = beers_df.loc[beers_df.beer_brewery==beer_name,'beer_id'].values[0]
     return beer_raw_id
 
 def get_beer_style (beer_raw_id):
@@ -50,16 +51,19 @@ def get_beer_recc_df (beer_raw_id):
     beer_neighbors = (algo.trainset.to_raw_iid(inner_id)
                       for inner_id in beer_neighbors)
     beers_id_recc = []
-    beer_name_recc =[]
+    beer_brewery_recc =[]
     beer_style_recc = []
     beer_score_mean = []
     for beer in beer_neighbors:
         beers_id_recc.append(beer)
-        beer_name_recc.append(get_beer_name(beer))
+        beer_brewery_recc.append(get_beer_brewery(beer))
         beer_style_recc.append(get_beer_style(beer))
         beer_score_mean.append(get_beer_score_mean(beer))
-    beer_reccomendations_df = pd.DataFrame(list(zip(beers_id_recc,beer_name_recc,beer_style_recc,beer_score_mean)),
-                                       columns=['beer_id', 'name', 'style', 'score_mean'])
+    beer_reccomendations_df = pd.DataFrame(list(zip(beers_id_recc,
+                                                    beer_brewery_recc,
+                                                    beer_style_recc,
+                                                    beer_score_mean)),
+                                       columns=['beer_id', 'name','style', 'score_mean'])
     return beer_reccomendations_df
 
 ################################################################
@@ -229,7 +233,7 @@ def breweries():
 
 @app.route("/test.html")
 def recommender_selector():
-    beers = beers_df['name'].tolist()
+    beers = beers_df['beer_brewery'].tolist()
     beers.sort()
     beers.insert(0, "Choose a Beer")
     return render_template("test.html", beers = beers)
