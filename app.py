@@ -269,8 +269,12 @@ def userpredict(username):
         predict_df = predict_df.append(pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details']))
     picks = pd.merge(predict_df, beers_df, on='beer_id')
     top_10picks = picks.sort_values(by=['estimate'],ascending= False)[:10]
+    top_10picks['pick'] = 'Top10'
+    bot_10picks = picks.sort_values(by=['estimate'],ascending= False)[-10:]
+    bot_10picks['pick'] = 'Bottom10'
+    user_picks = pd.concat([top_10picks, bot_10picks])
     
-    return Response(top_10picks.to_json(orient = "records"), mimetype='application/json')
+    return Response(user_picks.to_json(orient = "records"), mimetype='application/json')
     
 
 ################################################################
