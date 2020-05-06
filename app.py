@@ -11,16 +11,18 @@ import os
 from surprise import dump
 
 
-# Path to dump file and name
-dumpfile = os.path.join('./data/dump/dump_knn_pearsonbaseline_500dump_file')
+# Path to dump files and name
+dumpfile_knn = os.path.join('./data/dump/dump_knn_dump_file')
+dumpfile_svd = os.path.join('./data/dump/dump_svd_dump_file')
 beer_pickel_path = os.path.join('./data/dump/beer_final.pkl')
 
 # Load dump files
-predictions,algo = dump.load(dumpfile)
+predictions_knn,algo_knn = dump.load(dumpfile_knn)
+predictions_svd,algo_svd = dump.load(dumpfile_svd)
 beers_df = pd.read_pickle(beer_pickel_path)
 
-# Create the trainset from the algo
-trainset = algo.trainset
+# Create the trainset from the knn_algorithm in order to get the inner_ids
+trainset_knn = algo_knn.trainset
 
 
 def get_beer_brewery (beer_raw_id):
@@ -40,16 +42,16 @@ def get_beer_score_mean (beer_raw_id):
     return score_mean
 
 def get_beer_neighbors (beer_raw_id):
-    beer_inner_id = algo.trainset.to_inner_iid(beer_raw_id)
-    beer_neighbors = algo.get_neighbors(beer_inner_id, k=10)
-    beer_neighbors = (algo.trainset.to_raw_iid(inner_id)
+    beer_inner_id = algo_knn.trainset.to_inner_iid(beer_raw_id)
+    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=10)
+    beer_neighbors = (algo_knn.trainset.to_raw_iid(inner_id)
                   for inner_id in beer_neighbors)
     return(beer_neighbors)
 
 def get_beer_recc_df (beer_raw_id):
-    beer_inner_id = algo.trainset.to_inner_iid(beer_raw_id)
-    beer_neighbors = algo.get_neighbors(beer_inner_id, k=10)
-    beer_neighbors = (algo.trainset.to_raw_iid(inner_id)
+    beer_inner_id = algo_knn.trainset.to_inner_iid(beer_raw_id)
+    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=10)
+    beer_neighbors = (algo_knn.trainset.to_raw_iid(inner_id)
                       for inner_id in beer_neighbors)
     beers_id_recc = []
     beer_brewery_recc =[]
@@ -258,7 +260,7 @@ def predict():
     username = data_dict["username"]
     beer_name = data_dict["beer"]
     beer_raw_id = get_beer_raw_id(beer_name)
-    predict = algo.predict(username, beer_raw_id)
+    predict = algo_knn.predict(username, beer_raw_id)
     df_predict = pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details'])
     return Response(df_predict.to_json(orient = "records"), mimetype='application/json')
 
@@ -268,7 +270,7 @@ def userpredict(username):
     predict_df = pd.DataFrame([])
     for beer in beers:
         beer_raw_id = get_beer_raw_id(beer)
-        predict = algo.predict(username, beer_raw_id)
+        predict = algo_knn.predict(username, beer_raw_id)
         predict_df = predict_df.append(pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details']))
     picks = pd.merge(predict_df, beers_df, on='beer_id')
     top_10picks = picks.sort_values(by=['estimate'],ascending= False)[:10]
