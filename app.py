@@ -12,7 +12,7 @@ from surprise import dump
 
 
 # Path to dump files and name
-dumpfile_knn = os.path.join('./data/dump/dump_knn_pearsonbaseline_500dump_file')
+dumpfile_knn = os.path.join('./data/dump/dump_knn_dump_file')
 dumpfile_svd = os.path.join('./data/dump/dump_svd_dump_file')
 beer_pickel_path = os.path.join('./data/dump/beer_final.pkl')
 
@@ -260,7 +260,7 @@ def predict():
     username = data_dict["username"]
     beer_name = data_dict["beer"]
     beer_raw_id = get_beer_raw_id(beer_name)
-    predict = algo.predict(username, beer_raw_id)
+    predict = algo_knn.predict(username, beer_raw_id)
     df_predict = pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details'])
     return Response(df_predict.to_json(orient = "records"), mimetype='application/json')
 
@@ -270,7 +270,7 @@ def userpredict(username):
     predict_df = pd.DataFrame([])
     for beer in beers:
         beer_raw_id = get_beer_raw_id(beer)
-        predict = algo_svd.predict(username, beer_raw_id)
+        predict = algo_knn.predict(username, beer_raw_id)
         predict_df = predict_df.append(pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details']))
     picks = pd.merge(predict_df, beers_df, on='beer_id')
     top_10picks = picks.sort_values(by=['estimate'],ascending= False)[:10]
