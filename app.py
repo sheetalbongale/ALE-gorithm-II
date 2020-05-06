@@ -10,6 +10,7 @@ from flask import Response
 import os
 from surprise import dump
 
+
 # Path to dump file and name
 dumpfile = os.path.join('./data/dump/dump_knn_pearsonbaseline_500dump_file')
 beer_pickel_path = os.path.join('./data/dump/beer_final.pkl')
@@ -242,8 +243,6 @@ def recommender_selector():
     beers.insert(0, "Choose a Beer")
     return render_template("search.html", beers = beers)
 
-
-
 @app.route("/neighbors/<beer_name>")
 def nearest_neighbors(beer_name):
     beer_raw_id = get_beer_raw_id(beer_name)
@@ -262,6 +261,19 @@ def predict():
     predict = algo.predict(username, beer_raw_id)
     df_predict = pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details'])
     return Response(df_predict.to_json(orient = "records"), mimetype='application/json')
+
+@app.route("/userpredict/<username>")
+def userpredict(username):
+    beers = beers_df['beer_brewery'].tolist()
+    predict_df = pd.DataFrame([])
+    for beer in beers:
+        beer_raw_id = get_beer_raw_id(beer)
+        predict = algo.predict(username, beer_raw_id)
+        predict_df = predict_df.append(pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details']))
+    picks = pd.merge(predict_df, beers_df, on='beer_id')
+    top_10picks = picks.sort_values(by=['estimate'],ascending= False)[:10]
+    
+    return Response(top_10picks.to_json(orient = "records"), mimetype='application/json')
     
 
 ################################################################
