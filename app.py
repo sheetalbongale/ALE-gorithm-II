@@ -10,6 +10,7 @@ from flask import Response
 import os
 from surprise import dump
 
+
 # Path to dump file and name
 dumpfile = os.path.join('./data/dump/dump_knn_pearsonbaseline_500dump_file')
 beer_pickel_path = os.path.join('./data/dump/beer_final.pkl')
@@ -231,12 +232,12 @@ def breweries():
 #                       recommender model routes                #
 # --------------------------------------------------------------#
 
-@app.route("/test.html")
+@app.route("/search.html")
 def recommender_selector():
     beers = beers_df['beer_brewery'].tolist()
     beers.sort()
     beers.insert(0, "Choose a Beer")
-    return render_template("test.html", beers = beers)
+    return render_template("search.html", beers = beers)
 
 
 @app.route("/neighbors/<beer_name>")
