@@ -154,8 +154,10 @@ data/dump/dump_knn_pb_barryspicksdump_file
 data/dump/dump_svd_barryspicksdump_file
 
 reviews_NLTK.csv
+reviews500_NLTK.csv
 
 
 # Configuration files
 db/config.py
+config.py
 
