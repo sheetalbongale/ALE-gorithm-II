@@ -43,14 +43,14 @@ def get_beer_score_mean (beer_raw_id):
 
 def get_beer_neighbors (beer_raw_id):
     beer_inner_id = algo_knn.trainset.to_inner_iid(beer_raw_id)
-    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=10)
+    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=5)
     beer_neighbors = (algo_knn.trainset.to_raw_iid(inner_id)
                   for inner_id in beer_neighbors)
     return(beer_neighbors)
 
 def get_beer_recc_df (beer_raw_id):
     beer_inner_id = algo_knn.trainset.to_inner_iid(beer_raw_id)
-    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=10)
+    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=5)
     beer_neighbors = (algo_knn.trainset.to_raw_iid(inner_id)
                       for inner_id in beer_neighbors)
     beers_id_recc = []
@@ -250,6 +250,7 @@ def recommender_selector():
 def nearest_neighbors(beer_name):
     beer_raw_id = get_beer_raw_id(beer_name)
     df = get_beer_recc_df (beer_raw_id)
+    df['score_mean'] = df['score_mean'].apply(lambda x: round(x,2))
 
     # return json of the dataframe
     return Response(df.to_json(orient = "records"), mimetype='application/json')
