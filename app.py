@@ -111,7 +111,7 @@ def recommender():
     query = f"SELECT DISTINCT Category FROM {TABLENAME}"
     df = pd.read_sql_query(query, sql_engine)
     categories = df["Category"].tolist()
-    categories.insert(0, "Choose a Category")
+    categories.append("Choose a Category")
     return render_template("recommender.html", categories=categories)
 
 
@@ -243,7 +243,7 @@ def breweries():
 def recommender_selector():
     beers = beers_df['beer_brewery'].tolist()
     beers.sort()
-    beers.insert(0, "Choose a Beer")
+    beers.append("Choose a Beer")
     return render_template("search.html", beers = beers)
 
 @app.route("/neighbors/<beer_name>") # Beer_name is beer;brewery format to match the search route

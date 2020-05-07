@@ -54,8 +54,11 @@
 
                     <ul class="actions special">
                         <li>
-							<select class="custom-select button secondary chosen" id="selDatasetFour" onchange="optionChangedFour(this.value)">{% for beer in beers %}
-								<option selected class="custom-option">{{beer}}</option>{% endfor %}</select>
+							<select class="custom-select button secondary chosen" id="selDatasetFour" onchange="optionChangedFour(this.value)">
+								{% for beer in beers %}
+								<option selected class="custom-option">{{beer}}</option>
+								{% endfor %}
+							</select>
                             </li>
                         </ul>
                     </header>
