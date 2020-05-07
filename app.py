@@ -43,14 +43,14 @@ def get_beer_score_mean (beer_raw_id):
 
 def get_beer_neighbors (beer_raw_id):
     beer_inner_id = algo_knn.trainset.to_inner_iid(beer_raw_id)
-    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=10)
+    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=5)
     beer_neighbors = (algo_knn.trainset.to_raw_iid(inner_id)
                   for inner_id in beer_neighbors)
     return(beer_neighbors)
 
 def get_beer_recc_df (beer_raw_id):
     beer_inner_id = algo_knn.trainset.to_inner_iid(beer_raw_id)
-    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=10)
+    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=5)
     beer_neighbors = (algo_knn.trainset.to_raw_iid(inner_id)
                       for inner_id in beer_neighbors)
     beers_id_recc = []
@@ -111,7 +111,7 @@ def recommender():
     query = f"SELECT DISTINCT Category FROM {TABLENAME}"
     df = pd.read_sql_query(query, sql_engine)
     categories = df["Category"].tolist()
-    categories.insert(0, "Choose a Category")
+    categories.append("Choose a Category")
     return render_template("recommender.html", categories=categories)
 
 
@@ -243,13 +243,14 @@ def breweries():
 def recommender_selector():
     beers = beers_df['beer_brewery'].tolist()
     beers.sort()
-    beers.insert(0, "Choose a Beer")
+    beers.append("Choose a Beer")
     return render_template("search.html", beers = beers)
 
 @app.route("/neighbors/<beer_name>") # Beer_name is beer;brewery format to match the search route
 def nearest_neighbors(beer_name):
     beer_raw_id = get_beer_raw_id(beer_name)
     df = get_beer_recc_df (beer_raw_id)
+    df['score_mean'] = df['score_mean'].apply(lambda x: round(x,2))
 
     # return json of the dataframe
     return Response(df.to_json(orient = "records"), mimetype='application/json')
@@ -263,7 +264,7 @@ def predict():
     beer_name = data_dict["beer"]   # Beer_name is beer;brewery format to match the search route
     beer_raw_id = get_beer_raw_id(beer_name)
     predict = algo_knn.predict(username, beer_raw_id)
-    df_predict = pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details'])
+    df_predict = pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'prediction', 'details'])
     return Response(df_predict.to_json(orient = "records"), mimetype='application/json')
 
 # Route takes the username and returns the top10 and bottom 10 predicted ratings
@@ -274,16 +275,20 @@ def userpredict(username):
     for beer in beers:
         beer_raw_id = get_beer_raw_id(beer)
         predict = algo_knn.predict(username, beer_raw_id)
-        predict_df = predict_df.append(pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details']))
+        predict_df = predict_df.append(pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'prediction', 'details']))
     picks = pd.merge(predict_df, beers_df, on='beer_id')
-    top_10picks = picks.sort_values(by=['estimate'],ascending= False)[:10]
+    picks = picks.round({'prediction':2, 'score':2})
+    top_10picks = picks.sort_values(by=['prediction'],ascending= False)[:10]
     top_10picks['pick'] = 'Top10'
-    bot_10picks = picks.sort_values(by=['estimate'],ascending= False)[-10:]
+    bot_10picks = picks.sort_values(by=['prediction'],ascending= False)[-10:]
     bot_10picks['pick'] = 'Bottom10'
     user_picks = pd.concat([top_10picks, bot_10picks])
-    
     return Response(user_picks.to_json(orient = "records"), mimetype='application/json')
-    
+
+# Route will call /userpredict/<username> to render predictions for user with table
+@app.route("/userpredict.html")
+def predict_user_rating():
+    return render_template("userpredict.html")
 
 ################################################################
 #                           Main                               #
