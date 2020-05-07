@@ -11,7 +11,7 @@ function buildKNNRecommender(beer_name){
             .classed("card", true)
             .append("div")
             .classed("card-body", true)
-        cardBody.append("h4")
+        cardBody.append("h3")
             .classed("card-title", true)
             .text(e.name)
         cardBody.append("h6")

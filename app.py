@@ -240,12 +240,12 @@ def breweries():
 # --------------------------------------------------------------#
 
 # Route returns the beer;brewery to populate the dropdown
-@app.route("/search.html")
+@app.route("/knnrecommender.html")
 def recommender_selector():
     beers = beers_df['beer_brewery'].tolist()
     beers.sort()
     beers.append("Choose a Beer")
-    return render_template("search.html", beers = beers)
+    return render_template("knnrecommender.html", beers = beers)
 
 @app.route("/neighbors/<beer_name>") # Beer_name is beer;brewery format to match the search route
 def nearest_neighbors(beer_name):
