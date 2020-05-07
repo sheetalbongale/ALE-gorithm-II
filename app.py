@@ -264,7 +264,7 @@ def predict():
     beer_name = data_dict["beer"]   # Beer_name is beer;brewery format to match the search route
     beer_raw_id = get_beer_raw_id(beer_name)
     predict = algo_knn.predict(username, beer_raw_id)
-    df_predict = pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details'])
+    df_predict = pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'prediction', 'details'])
     return Response(df_predict.to_json(orient = "records"), mimetype='application/json')
 
 # Route takes the username and returns the top10 and bottom 10 predicted ratings
@@ -275,12 +275,12 @@ def userpredict(username):
     for beer in beers:
         beer_raw_id = get_beer_raw_id(beer)
         predict = algo_knn.predict(username, beer_raw_id)
-        predict_df = predict_df.append(pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details']))
+        predict_df = predict_df.append(pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'prediction', 'details']))
     picks = pd.merge(predict_df, beers_df, on='beer_id')
-    picks = picks.round({'estimate':2, 'score':2})
-    top_10picks = picks.sort_values(by=['estimate'],ascending= False)[:10]
+    picks = picks.round({'prediction':2, 'score':2})
+    top_10picks = picks.sort_values(by=['prediction'],ascending= False)[:10]
     top_10picks['pick'] = 'Top10'
-    bot_10picks = picks.sort_values(by=['estimate'],ascending= False)[-10:]
+    bot_10picks = picks.sort_values(by=['prediction'],ascending= False)[-10:]
     bot_10picks['pick'] = 'Bottom10'
     user_picks = pd.concat([top_10picks, bot_10picks])
     return Response(user_picks.to_json(orient = "records"), mimetype='application/json')
