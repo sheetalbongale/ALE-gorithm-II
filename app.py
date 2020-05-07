@@ -277,6 +277,7 @@ def userpredict(username):
         predict = algo_knn.predict(username, beer_raw_id)
         predict_df = predict_df.append(pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details']))
     picks = pd.merge(predict_df, beers_df, on='beer_id')
+    picks = picks.round({'estimate':2, 'score':2})
     top_10picks = picks.sort_values(by=['estimate'],ascending= False)[:10]
     top_10picks['pick'] = 'Top10'
     bot_10picks = picks.sort_values(by=['estimate'],ascending= False)[-10:]
