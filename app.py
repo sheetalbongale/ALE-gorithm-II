@@ -280,7 +280,10 @@ def userpredict(username):
     user_picks = pd.concat([top_10picks, bot_10picks])
     
     return Response(user_picks.to_json(orient = "records"), mimetype='application/json')
-    
+
+@app.route("/userpredict")
+def predict_user_rating():
+    return render_template("userpredict.html") 
 
 ################################################################
 #                           Main                               #
