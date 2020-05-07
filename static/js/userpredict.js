@@ -1,5 +1,5 @@
 // Grab the button - dropdown
-const dropdown = d3.select("dropdown")
+const dropdown = d3.selectAll(".dropdown-menu a")
 
 // Add a H2 element
 const header = d3.select('#top10').append("h2")
@@ -8,16 +8,17 @@ const header = d3.select('#top10').append("h2")
 const table = d3.select('#top10').append("table")
 
 // Function to predict user preferences
-function predictRatings(username){
+function predictRatings(){
+  // Grab the selected text from dropdown (via event handler)
+  let username = d3.select(this).text()
   
   console.log('hello 2020');
 
+  // Pull the data for the corresponding user
   d3.json(`/userpredict/${username}`).then(data => {
     console.log(data)
 
     header.text("We're confident you'll enjoy the following beers.")
-    
-    // let selUser = dropdown.property("value")
 
     // Wipes the prior table and fills the table with the desired filters
     table.html("")
@@ -41,8 +42,5 @@ function predictRatings(username){
   })
 };
 
-// For testing/demo purposes
-predictRatings('michellebrucato')
-
-// NEEDS WORK After the user selects their username, the handler function will execute
-// dropdown.on("change", predictRatings);
+// After the user selects their username, the handler function will execute
+dropdown.on("click", predictRatings);
