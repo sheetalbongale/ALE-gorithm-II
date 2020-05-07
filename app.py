@@ -283,9 +283,12 @@ def userpredict(username):
     bot_10picks = picks.sort_values(by=['estimate'],ascending= False)[-10:]
     bot_10picks['pick'] = 'Bottom10'
     user_picks = pd.concat([top_10picks, bot_10picks])
-    
     return Response(user_picks.to_json(orient = "records"), mimetype='application/json')
-    
+
+# Route will call /userpredict/<username> to render predictions for user with table
+@app.route("/userpredict")
+def predict_user_rating():
+    return render_template("userpredict.html")
 
 ################################################################
 #                           Main                               #
