@@ -5,12 +5,13 @@ function buildKNNRecommender(beer_name){
     
     d3.json(`/neighbors/${beer_name}`).then(data => data.forEach(e => {
         console.log(data)
+
         let cardBody = d3.select("#top10neighbors")
             .append("div")
             .classed("card", true)
             .append("div")
             .classed("card-body", true)
-        cardBody.append("h4")
+        cardBody.append("h3")
             .classed("card-title", true)
             .text(e.name)
         cardBody.append("h6")
@@ -18,15 +19,15 @@ function buildKNNRecommender(beer_name){
             .text(`Beer Style: ${e.style}`)
         cardBody.append("p")
             .classed("card-text", true)
-            .text(`Beer Advocate Score: ${e.score_mean}`)
+            .text(`BeerAdvocate Score: ${e.score_mean}`)
     }))
 };
 
 
 //-----------------FUNCTION INITIATOR-----------------//
 function init() {
-    d3.select('#top10neighbors').html(""),
-    buildKNNRecommender('Abbey Ale; Brewery Ommegang');
+    d3.select('#top10neighbors').html(""),    
+    buildKNNRecommender(beer_name);
 
 }
 
