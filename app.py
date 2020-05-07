@@ -20,6 +20,7 @@ beer_pickel_path = os.path.join('./data/dump/beer_final.pkl')
 predictions_knn,algo_knn = dump.load(dumpfile_knn)
 predictions_svd,algo_svd = dump.load(dumpfile_svd)
 beers_df = pd.read_pickle(beer_pickel_path)
+beers_df['beer_brewery'] = beers_df['beer_brewery'].replace('/', '-', regex=True)
 
 # Create the trainset from the knn_algorithm in order to get the inner_ids
 trainset_knn = algo_knn.trainset
