@@ -286,7 +286,7 @@ def userpredict(username):
     return Response(user_picks.to_json(orient = "records"), mimetype='application/json')
 
 # Route will call /userpredict/<username> to render predictions for user with table
-@app.route("/userpredict")
+@app.route("/userpredict.html")
 def predict_user_rating():
     return render_template("userpredict.html")
 
