@@ -17,7 +17,7 @@ function buildKNNRecommender(beer_name){
             .classed("card-subtitle mb-2 text-muted", true)
             .text(`Beer Style: ${e.style}`)
         cardBody.append("p")
-            .classed("city", true)
+            .classed("card-text", true)
             .text(`Beer Advocate Score: ${e.score_mean}`)
     }))
 };
