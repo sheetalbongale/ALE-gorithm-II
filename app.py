@@ -238,6 +238,7 @@ def breweries():
 #                       recommender model routes                #
 # --------------------------------------------------------------#
 
+# Route returns the beer;brewery to populate the dropdown
 @app.route("/search.html")
 def recommender_selector():
     beers = beers_df['beer_brewery'].tolist()
@@ -245,7 +246,7 @@ def recommender_selector():
     beers.insert(0, "Choose a Beer")
     return render_template("search.html", beers = beers)
 
-@app.route("/neighbors/<beer_name>")
+@app.route("/neighbors/<beer_name>") # Beer_name is beer;brewery format to match the search route
 def nearest_neighbors(beer_name):
     beer_raw_id = get_beer_raw_id(beer_name)
     df = get_beer_recc_df (beer_raw_id)
@@ -253,17 +254,19 @@ def nearest_neighbors(beer_name):
     # return json of the dataframe
     return Response(df.to_json(orient = "records"), mimetype='application/json')
 
+# Beer_name is beer;brewery format
 @app.route("/predict", methods=["POST"])
 def predict():
     data_dict = request.get_json()
 
     username = data_dict["username"]
-    beer_name = data_dict["beer"]
+    beer_name = data_dict["beer"]   # Beer_name is beer;brewery format to match the search route
     beer_raw_id = get_beer_raw_id(beer_name)
     predict = algo_knn.predict(username, beer_raw_id)
     df_predict = pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details'])
     return Response(df_predict.to_json(orient = "records"), mimetype='application/json')
 
+# Route takes the username and returns the top10 and bottom 10 predicted ratings
 @app.route("/userpredict/<username>")
 def userpredict(username):
     beers = beers_df['beer_brewery'].tolist()
