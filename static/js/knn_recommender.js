@@ -1,4 +1,6 @@
-// Function to display top 5 beers
+//----------------KNN RECOMMENDER JS SCRIPT-----------------//
+
+// Function to display top 10 beer recommenders using KNN model
 function buildKNNRecommender(beer_name){
     
     d3.json(`/neighbors/${beer_name}`).then(data => data.forEach(e => {
@@ -17,8 +19,8 @@ function buildKNNRecommender(beer_name){
         cardBody.append("p")
             .classed("city", true)
             .text(`Beer Advocate Score: ${e.score_mean}`)
-        }))
-    };
+    }))
+};
 
 
 //-----------------FUNCTION INITIATOR-----------------//
@@ -30,12 +32,13 @@ function init() {
 
 //-------- Create Event Listener--------//
 function optionChangedFour(newBeer) {
-beer_name = newBeer;
-console.log(beer_name)
+    beer_name = newBeer;
+    console.log(beer_name)
 
-d3.select('#top10neighbors').html(""),
+    d3.select('#top10neighbors').html(""),
     buildKNNRecommender(beer_name);
 
 }
 
+// call init function 
 init();
