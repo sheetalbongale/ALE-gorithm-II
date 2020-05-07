@@ -22,6 +22,7 @@ function predictRatings(username){
     // Wipes the prior table and fills the table with the desired filters
     table.html("")
     const headerRow = table.append("thead").append("tr")
+    headerRow.append("th").text("Prediction")
     headerRow.append("th").text("Score")
     headerRow.append("th").text("Name")
     headerRow.append("th").text("Style")
@@ -31,6 +32,7 @@ function predictRatings(username){
 
     data.forEach(dataRow => {
       let row = tbody.append("tr")
+      row.append("td").text(dataRow.prediction)
       row.append("td").text(dataRow.score)
       row.append("td").text(dataRow.name)
       row.append("td").text(dataRow.style)
