@@ -2470,7 +2470,8 @@ input, select, textarea {
 		min-width: 400px;
 		border-radius: 5px 5px 0 0;
 		overflow: hidden;
-		box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+		font-family: Arial, Helvetica, sans-serif
 	}
 
 	.table-recommend thead tr {
@@ -2500,3 +2501,14 @@ input, select, textarea {
 		background-color: #E8E8E8;
 		opacity: 0.85;
 	}
+
+	/* Nav Bar Drop Down */
+
+	.navbar .dropdown-menu {
+		background-color: #000000;
+		opacity: 0.6;
+		height: auto ;
+		width: auto;
+	  }
+
+
