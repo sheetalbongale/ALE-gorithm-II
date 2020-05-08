@@ -44,14 +44,14 @@ def get_beer_score_mean (beer_raw_id):
 
 def get_beer_neighbors (beer_raw_id):
     beer_inner_id = algo_knn.trainset.to_inner_iid(beer_raw_id)
-    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=5)
+    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=10)
     beer_neighbors = (algo_knn.trainset.to_raw_iid(inner_id)
                   for inner_id in beer_neighbors)
     return(beer_neighbors)
 
 def get_beer_recc_df (beer_raw_id):
     beer_inner_id = algo_knn.trainset.to_inner_iid(beer_raw_id)
-    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=5)
+    beer_neighbors = algo_knn.get_neighbors(beer_inner_id, k=10)
     beer_neighbors = (algo_knn.trainset.to_raw_iid(inner_id)
                       for inner_id in beer_neighbors)
     beers_id_recc = []
@@ -240,12 +240,12 @@ def breweries():
 # --------------------------------------------------------------#
 
 # Route returns the beer;brewery to populate the dropdown
-@app.route("/search.html")
+@app.route("/knnrecommender.html")
 def recommender_selector():
     beers = beers_df['beer_brewery'].tolist()
     beers.sort()
     beers.append("Choose a Beer")
-    return render_template("search.html", beers = beers)
+    return render_template("knnrecommender.html", beers = beers)
 
 @app.route("/neighbors/<beer_name>") # Beer_name is beer;brewery format to match the search route
 def nearest_neighbors(beer_name):
