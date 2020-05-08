@@ -71,7 +71,7 @@ def get_beer_recc_df(beer_raw_id):
         list(zip(beers_id_recc, beer_brewery_recc, beer_style_recc, beer_score_mean)),
         columns=["beer_id", "name", "style", "score_mean"],
     )
-    return beer_reccomendations_d
+    return beer_reccomendations_df
 
 
 ################################################################
