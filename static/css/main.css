@@ -2255,7 +2255,7 @@ input, select, textarea {
 
 		}
 
-/* Intro */
+/* Index Page Intro */
 
 	#intro {
 		background: url("../img/hero1.png") no-repeat center top;
@@ -2264,7 +2264,7 @@ input, select, textarea {
 		background-position: top left, center center;
 	}
 
-/* One */
+/* Index Page - recommender section */
 
 	#recommender {
 		background: url("../img/hero2.jpg") no-repeat center top;
@@ -2273,7 +2273,7 @@ input, select, textarea {
 		background-position: top left, center center;
 	}
 
-/* Two */
+/* Index Page - dashboard section */
 
 	#dashboard {
 		background: url("../img/hero3.jpg");
@@ -2287,6 +2287,14 @@ input, select, textarea {
 
 	#recommenderpage {
 		background-image: url('../img/recommender4.jpg');
+		background-size: cover;
+		background-attachment: fixed, fixed;
+		background-position: bottom;
+		
+	  }
+
+	#knnrecommenderpage {
+		background-image: url('../img/knnimage.jpg');
 		background-size: cover;
 		background-attachment: fixed, fixed;
 		background-position: bottom;
@@ -2323,6 +2331,7 @@ input, select, textarea {
 			padding: 0;
 		}
 
+	/* D3 SCATTER PLOT */
 	#scatter{
 			width: 80%;
 			height: 100%;
@@ -2355,7 +2364,6 @@ input, select, textarea {
 			cursor: pointer;
 		  }
 		  
-		  /* font size dependent on radius, see app.js */
 		  .stateText {
 			font-family: sans-serif;
 			fill: #fff;
@@ -2408,6 +2416,7 @@ input, select, textarea {
 			z-index: -1;
 		}
 	
+		/* DASHBOARD PAGE */
 		.dashboard {
 			font-family: 'Open Sans Condensed', sans-serif;
 			text-transform: uppercase;

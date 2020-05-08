@@ -18,6 +18,7 @@ beer_pickel_path = os.path.join('./data/dump/beer_final.pkl')
 # Load dump files
 predictions_knn,algo_knn = dump.load(dumpfile_knn)
 beers_df = pd.read_pickle(beer_pickel_path)
+beers_df['beer_brewery'] = beers_df['beer_brewery'].replace('/', '-', regex=True)
 
 # Create the trainset from the knn_algorithm in order to get the inner_ids
 trainset_knn = algo_knn.trainset
@@ -109,7 +110,7 @@ def recommender():
     query = f"SELECT DISTINCT Category FROM {TABLENAME}"
     df = pd.read_sql_query(query, sql_engine)
     categories = df["Category"].tolist()
-    categories.insert(0, "Choose a Category")
+    categories.append("Choose a Category")
     return render_template("recommender.html", categories=categories)
 
 
@@ -236,32 +237,36 @@ def breweries():
 #                       recommender model routes                #
 # --------------------------------------------------------------#
 
-@app.route("/search.html")
+# Route returns the beer;brewery to populate the dropdown
+@app.route("/knnrecommender.html")
 def recommender_selector():
     beers = beers_df['beer_brewery'].tolist()
     beers.sort()
-    beers.insert(0, "Choose a Beer")
-    return render_template("search.html", beers = beers)
+    beers.append("Choose a Beer")
+    return render_template("knnrecommender.html", beers = beers)
 
-@app.route("/neighbors/<beer_name>")
+@app.route("/neighbors/<beer_name>") # Beer_name is beer;brewery format to match the search route
 def nearest_neighbors(beer_name):
     beer_raw_id = get_beer_raw_id(beer_name)
     df = get_beer_recc_df (beer_raw_id)
+    df['score_mean'] = df['score_mean'].apply(lambda x: round(x,2))
 
     # return json of the dataframe
     return Response(df.to_json(orient = "records"), mimetype='application/json')
 
+# Beer_name is beer;brewery format
 @app.route("/predict", methods=["POST"])
 def predict():
     data_dict = request.get_json()
 
     username = data_dict["username"]
-    beer_name = data_dict["beer"]
+    beer_name = data_dict["beer"]   # Beer_name is beer;brewery format to match the search route
     beer_raw_id = get_beer_raw_id(beer_name)
     predict = algo_knn.predict(username, beer_raw_id)
-    df_predict = pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details'])
+    df_predict = pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'prediction', 'details'])
     return Response(df_predict.to_json(orient = "records"), mimetype='application/json')
 
+# Route takes the username and returns the top10 and bottom 10 predicted ratings
 @app.route("/userpredict/<username>")
 def userpredict(username):
     beers = beers_df['beer_brewery'].tolist()
@@ -269,16 +274,20 @@ def userpredict(username):
     for beer in beers:
         beer_raw_id = get_beer_raw_id(beer)
         predict = algo_knn.predict(username, beer_raw_id)
-        predict_df = predict_df.append(pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'estimate', 'details']))
+        predict_df = predict_df.append(pd.DataFrame([predict], columns=['username', 'beer_id', 'r_ui', 'prediction', 'details']))
     picks = pd.merge(predict_df, beers_df, on='beer_id')
-    top_10picks = picks.sort_values(by=['estimate'],ascending= False)[:10]
+    picks = picks.round({'prediction':2, 'score':2})
+    top_10picks = picks.sort_values(by=['prediction'],ascending= False)[:10]
     top_10picks['pick'] = 'Top10'
-    bot_10picks = picks.sort_values(by=['estimate'],ascending= False)[-10:]
+    bot_10picks = picks.sort_values(by=['prediction'],ascending= False)[-10:]
     bot_10picks['pick'] = 'Bottom10'
     user_picks = pd.concat([top_10picks, bot_10picks])
-    
     return Response(user_picks.to_json(orient = "records"), mimetype='application/json')
-    
+
+# Route will call /userpredict/<username> to render predictions for user with table
+@app.route("/userpredict.html")
+def predict_user_rating():
+    return render_template("userpredict.html")
 
 ################################################################
 #                           Main                               #
