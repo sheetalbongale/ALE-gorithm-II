@@ -2,9 +2,11 @@
 
 // Function to display top 10 beer recommenders using KNN model
 function buildKNNRecommender(beer_name){
+
+    var count = 0;
     
     d3.json(`/neighbors/${beer_name}`).then(data => data.forEach(e => {
-        var count = 0;
+
         console.log(data)
 
         if(count<5){
@@ -25,7 +27,7 @@ function buildKNNRecommender(beer_name){
             }
 
         else if (count>=5){
-            let cardBody = d3.select("#next5neighbors")
+            cardBody = d3.select("#next5neighbors")
                 .append("div")
                 .classed("card", true)
                 .append("div")
