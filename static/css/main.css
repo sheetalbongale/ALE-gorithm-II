@@ -724,7 +724,7 @@ input, select, textarea {
 		input[type="reset"]:hover,
 		.button:hover,
 		button:hover {
-			background-color: #838276;
+			background-color: #747474;
 		}
 
 		input[type="button"]:active,
@@ -2301,6 +2301,14 @@ input, select, textarea {
 		
 	  }
 
+	#predictorpage {
+		background-image: url('../img/BeerExplosion.gif');
+		background-size: cover;
+		background-attachment: fixed, fixed;
+		background-position: bottom;
+		
+	  }
+
 		@media screen and (max-width: 736px) {
 
 			#contact .box {
@@ -2453,3 +2461,42 @@ input, select, textarea {
 			margin-left: auto;
 			margin-right: auto;
 		}
+
+				/* Recommender Table */
+
+	.table-recommend {
+		margin: 25px 0;
+		font-size: 0.9em;
+		min-width: 400px;
+		border-radius: 5px 5px 0 0;
+		overflow: hidden;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)
+	}
+
+	.table-recommend thead tr {
+		background-color: #303030;
+		color: #ffffff;
+		text-align: left;
+		font-weight: bold;
+		font-size: 1.5em;
+		opacity: 0.85;
+	}
+
+	.table-recommend th,
+	.table-recommend td {
+		padding: 12px 15px;
+	}
+
+	.table-recommend tbody tr {
+		border-bottom: 1px solid #dddddd
+	}
+
+	.table-recommend tbody tr:nth-last-of-type(even){
+		background-color: #f3f3f3;
+		opacity: 0.85;
+	}
+
+	.table-recommend tbody tr:nth-last-of-type(odd){
+		background-color: #E8E8E8;
+		opacity: 0.85;
+	}
