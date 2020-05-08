@@ -2302,10 +2302,10 @@ input, select, textarea {
 	  }
 
 	#predictorpage {
-		background-image: url('../img/BeerExplosion.gif');
+		background-image: url('../img/background5.jpg');
 		background-size: cover;
 		background-attachment: fixed, fixed;
-		background-position: bottom;
+		background-position: top;
 		
 	  }
 
