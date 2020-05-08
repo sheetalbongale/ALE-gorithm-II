@@ -71,7 +71,7 @@ def get_beer_recc_df(beer_raw_id):
         list(zip(beers_id_recc, beer_brewery_recc, beer_style_recc, beer_score_mean)),
         columns=["beer_id", "name", "style", "score_mean"],
     )
-    return beer_reccomendations_df
+    return beer_reccomendations_d
 
 
 ################################################################
@@ -241,9 +241,8 @@ def state_stat(state):
 def breweries():
     return render_template("breweries.html")
 
-
 # --------------------------------------------------------------#
-#                       recommender model routes                #
+#                       Recommender model routes                #
 # --------------------------------------------------------------#
 
 # Route returns the beer;brewery to populate the dropdown
@@ -318,4 +317,8 @@ def predict_user_rating():
 #                           Main                               #
 ################################################################
 if __name__ == "__main__":
+<<<<<<< HEAD
     app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
+=======
+    app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
+>>>>>>> 95d4c2f8ee2a3a31dbb9cc37d18eab112a0ed6c5
