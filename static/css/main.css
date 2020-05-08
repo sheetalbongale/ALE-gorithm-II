@@ -724,7 +724,7 @@ input, select, textarea {
 		input[type="reset"]:hover,
 		.button:hover,
 		button:hover {
-			background-color: #838276;
+			background-color: #747474;
 		}
 
 		input[type="button"]:active,
@@ -2295,6 +2295,14 @@ input, select, textarea {
 
 	#knnrecommenderpage {
 		background-image: url('../img/knnimage.jpg');
+		background-size: cover;
+		background-attachment: fixed, fixed;
+		background-position: bottom;
+		
+	  }
+
+	#predictorpage {
+		background-image: url('../img/BeerExplosion.gif');
 		background-size: cover;
 		background-attachment: fixed, fixed;
 		background-position: bottom;
