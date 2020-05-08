@@ -28,8 +28,9 @@ function predictRatings(){
     topTable.html("")
     botTable.html("")
     let headerRow = topTable.append("thead").append("tr")
+    headerRow.append("th").text("Username")
     headerRow.append("th").text("Prediction")
-    headerRow.append("th").text("Score")
+    headerRow.append("th").text("BAScore")
     headerRow.append("th").text("Name")
     headerRow.append("th").text("Style")
     headerRow.append("th").text("Brewery")
@@ -37,8 +38,9 @@ function predictRatings(){
     const topTbody = topTable.append("tbody")
 
     headerRow = botTable.append("thead").append("tr")
+    headerRow.append("th").text("Username")
     headerRow.append("th").text("Prediction")
-    headerRow.append("th").text("Score")
+    headerRow.append("th").text("BAScore")
     headerRow.append("th").text("Name")
     headerRow.append("th").text("Style")
     headerRow.append("th").text("Brewery")
@@ -48,6 +50,7 @@ function predictRatings(){
     data.forEach(dataRow => {
       if (dataRow.pick === 'Top10') {
         let row = topTbody.append("tr")
+        row.append("td").text(dataRow.username)
         row.append("td").text(dataRow.prediction)
         row.append("td").text(dataRow.score)
         row.append("td").text(dataRow.name)
@@ -55,6 +58,7 @@ function predictRatings(){
         row.append("td").text(dataRow.brewery_name)
       } else {
         let row = botTbody.append("tr")
+        row.append("td").text(dataRow.username)
         row.append("td").text(dataRow.prediction)
         row.append("td").text(dataRow.score)
         row.append("td").text(dataRow.name)
