@@ -59,7 +59,7 @@
                             <a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button"
                             data-toggle="dropdown"><i class="fa fa-th"></i> Beer Analysis &nbsp;</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="recommender.html">Beer Educator &nbsp;</a>
+                                <a class="dropdown-item" href="educator.html">Beer Educator &nbsp;</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="dashboard.html">More About Beers &nbsp;</a>
                             </div>
@@ -96,10 +96,10 @@
             <header>
                 <h2>What is Ale-gorithm</h2>
                 <p>Have you ever wandered down the beer aisle feeling overwhelmed by options? Do you have a thirst for deliciously brewed craft beer, but don’t know which to choose?
-                    <br> Then you’ve come to the right place!
-                    <br>The goal of the ALE-gorithm web application & dashboard is to educate consumers on the craft beer space including styles, flavor profiles.
-                    <br>
-                    <!-- Progress Bar -->
+                    <br><h3>Then you’ve come to the right place!</h3>
+                    <br>ALE-gorithm is a beer recommender, web app, and dashboard aimed at educating consumers in the craft beer space.
+    
+    <!-- Progress Bar -->
     <div class="progress">
         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
     </div>
@@ -115,11 +115,14 @@
             <header>
                 <h2>Beer Recommender</h2>
             </header>
-            <p>Are you a beer connoisseur? Or even new to the #beerlife experience? No matter what your level of expertise is,
-                if you love to partake in a nice "cold one", then check out the recommender page.
+            <p>Got a favorite beer but want to expand your horizons? Check out our beer recommender. 
+                <br>This beer finder uses a KNNBasic model with Surprise, a Python scikit focused on creating recommender systems.
                 <br>We have scanned over a million beers and will match you to the top beers that best suit your palette.</p>
-            <a href="recommender.html">
-                <button type="button center" class="btn btn-primary"> Click here! </button>
+            <a href="knnrecommender.html">
+                <button type="button center" class="btn btn-primary"> Beer Finder </button>
+            </a>
+            <a href="userpredict.html">
+                <button type="button center" class="btn btn-primary"> Beer Predictor </button>
             </a>
         </div>
         <a href="#dashboard" class="button style2 down anchored"></a>
@@ -129,14 +132,17 @@
     <section id="dashboard" class="main style2 left dark fullscreen">
         <div class="content box style2">
             <header>
-                <h2>Dashboard</h2>
+                <h2>Beer Analysis Dashboard</h2>
             </header>
             <p>Want to learn more about your favorite beers? 
                 <br>Our interactive dashboard offers information about beers and breweries to both novice and seasoned beer lovers a like.
                 <br>Click here to get a deeper understanding of beers and the breweries near you!
             </p>
+            <a href="educator.html">
+                <button type="button center" class="btn btn-primary"> Beer Educator </button>
+            </a>
             <a href="dashboard.html">
-                <button type="button center" class="btn btn-primary"> Click here! </button>
+                <button type="button center" class="btn btn-primary"> More About Beer </button>
             </a>
         </div>
         <a href="#breweries" class="button style2 down anchored">Next</a>
@@ -159,103 +165,105 @@
     </section>
 
     
+
+    
     <!-- ==== TEAM MEMBERS ==== -->
-    <section class="main style3 primary">
-            <div class="container-fluid align-items-center" id="team" name="team">
-                <div class="content">
-                <img src="../static/img/logo2.png" style="width: 20%;" class="center align-items-center">
+        <!-- ==== TEAM MEMBERS ==== -->
+        <section class="main style3 primary">
+                <div class="container-fluid align-items-center" id="team" name="team">
+                    <div class="content">
+                    <img src="../static/img/logo2.png" style="width: 20%;" class="center align-items-center">
+                    </div>
+                    <h2 id="team" class="align-items-center centered">Meet Our Awesome & Brewtiful Team</h2>
+                    <hr>
+    
+                    <div class="row white align-items-center main style3 primary">
+                        <figure class="figure profile">
+                            <img class="circle" src="../static/img/BarryHaygood.jpg" alt="Avatar" height="200" width="200">
+                            <br>
+                            <h4><b>Barry Haygood</b></h4>
+                            <a href="https://www.linkedin.com/in/barry-haygood-7427993a/" class="fa fa-lg fa-linkedin"></a>
+                            <a href="https://github.com/tamu94" class="fa fa-lg fa-github"></a>
+                            <figcaption class="figure-caption text-left">🍺 Austin Beerworks Flavor Country</figcaption>
+                            <figcaption class="figure-caption text-left">🍺 Thirsty Goat</figcaption>
+                            <figcaption class="figure-caption text-left">🍺 Ayinger Celebrator</figcaption>                      
+                        </figure>
+                        
+    
+                        <figure class="figure profile">
+                            <img class="circle" src="../static/img/CathyEgboh.jpg" alt="Avatar" height="200" width="200">
+                            <br>
+                            <h4><b>Cathy Egboh</b></h4>
+                            <a href="https://www.linkedin.com/in/catherine-egboh-36400b104/" class="fa fa-lg fa-linkedin"></a>
+                            <a href="#https://github.com/CatEggs" class="fa fa-lg fa-github"></a>
+                            <figcaption class="figure-caption text-left">🍺 Revolver Blood and Honey</figcaption>
+                            <figcaption class="figure-caption text-left">🍺 Austin Amber</figcaption>
+                        </figure>
+                        
+    
+                        <figure class="figure profile">
+                            <img class="circle" src="../static/img/team/MayaSaeidi.jpg" alt="Avatar" height="200" width="200">
+                            <br>
+                            <h4><b>Maya Saeidi</b></h4>
+                            <a href="https://www.linkedin.com/in/maya-saeidi/" class="fa fa-lg fa-linkedin"></a>
+                            <a href="https://github.com/S-Maya" class="fa fa-lg fa-github"></a>
+                            <figcaption class="figure-caption text-left"><h>🍺 Corona Extra</h></figcaption>
+                            <figcaption class="figure-caption text-left"><h>🍺 Heineken</h></figcaption>
+                            <figcaption class="figure-caption text-left"><h>🍺 Guinness</h></figcaption>
+                        </figure>
+                        
+    
+                        <figure class="figure profile">
+                            <img class="circle" src="../static/img/MichelleBrucato.jpg" alt="Avatar" height="200" width="200">
+                            <br>
+                            <h4><b>Michelle Brucato</b></h4>
+                            <a href="https://www.linkedin.com/in/michelle-brucato/" class="fa fa-lg fa-linkedin"></a>
+                            <a href="https://github.com/michellebrucato" class="fa fa-lg fa-github"></a>
+                            <figcaption class="figure-caption text-left"><h>🍺 Victory Sour Monkey</h></figcaption>
+                            <figcaption class="figure-caption text-left"><h>🍺 Pinthouse Electric Jellyfish</h></figcaption>
+                        </figure>
+                        
+    
+                        <figure class="figure profile">
+                            <img class="circle" src="../static/img/SaharMohammadi.jpg" alt="Avatar" height="200" width="200">
+                            <br>
+                            <h4><b>Sahar Mohammadi</b></h4>
+                            <a href="https://www.linkedin.com/in/sahar-mohammadi-1425691a3/" class="fa fa-lg fa-linkedin"></a>
+                            <a href="https://github.com/sahar3267" class="fa fa-lg fa-github"></a>
+                            <figcaption class="figure-caption text-left"><h>🍺 Pilsner</h></figcaption>
+                            <figcaption class="figure-caption text-left"><h>🍺 American Amber</h></figcaption>
+                            <figcaption class="figure-caption text-left"><h>🍺 Heineken</h></figcaption>
+                        </figure>
+                        
+
+                        <figure class="figure profile">
+                                <img class="circle" src="../static/img/cathrinegomes.jpg" alt="Avatar" height="200" width="200">
+                                <br>
+                                <h4><b>Catherine Gomes</b></h4>
+                                <a href="https://www.linkedin.com/in/catherinegomes/" class="fa fa-lg fa-linkedin"></a>
+                                <a href="https://github.com/catherinegomes" class="fa fa-lg fa-github"></a>
+                                <figcaption class="figure-caption text-left">🍺 AOttermelon Hefeweizen by Odd Otter Brewing</figcaption>
+                                <figcaption class="figure-caption text-left">🍺 Coolship Red by Allagash Brewing Company</figcaption>
+                                                      
+                        </figure>        
+    
+                        
+                        <figure class="figure profile">
+                            <img class="circle" src="../static/img/SheetalBongale.jpg" alt="Avatar" height="200" width="200">
+                            <br>
+                            <h4><b>Sheetal Bongale</b></h4>
+                            <a href="https://www.linkedin.com/in/sheetal-bongale/" class="fa fa-lg fa-linkedin"></a>
+                            <a href="https://github.com/sheetalbongale" class="fa fa-lg fa-github"></a>
+                            <figcaption class="figure-caption text-left"><h>🍺 Karbach Hopadillo IPA</h></figcaption>
+                            <figcaption class="figure-caption text-left"><h>🍺 Fat Tire Amber Ale</h></figcaption>
+                            <figcaption class="figure-caption text-left"><h>🍺 Deschutes Fresh Squeezed IPA</h></figcaption>
+                        </figure>
+                    </div>
+                    <!-- col-lg col-md-6 -->
                 </div>
-                <h2 id="team" class="align-items-center centered">Meet Our Awesome & Brewtiful Team</h2>
-                <hr>
-
-                <div class="row white align-items-center main style3 primary">
-                    <figure class="figure profile">
-                        <img class="circle" src="../static/img/BarryHaygood.jpg" alt="Avatar" height="200" width="200">
-                        <br>
-                        <h4><b>Barry Haygood</b></h4>
-                        <a href="https://www.linkedin.com/in/barry-haygood-7427993a/" class="fa fa-lg fa-linkedin"></a>
-                        <a href="https://github.com/tamu94" class="fa fa-lg fa-github"></a>
-                        <figcaption class="figure-caption text-left">🍺 Austin Beerworks Flavor Country</figcaption>
-                        <figcaption class="figure-caption text-left">🍺 Thirsty Goat</figcaption>
-                        <figcaption class="figure-caption text-left">🍺 Ayinger Celebrator</figcaption>                      
-                    </figure>
-                    
-                    <figure class="figure profile">
-                        <img class="circle" src="../static/img/cathrinegomes.jpg" alt="Avatar" height="200" width="200">
-                        <br>
-                        <h4><b>Catherine Gomes</b></h4>
-                        <a href="https://www.linkedin.com/in/catherinegomes/" class="fa fa-lg fa-linkedin"></a>
-                        <a href="https://github.com/catherinegomes" class="fa fa-lg fa-github"></a>
-                        <figcaption class="figure-caption text-left">🍺 AOttermelon Hefeweizen by Odd Otter Brewing</figcaption>
-                        <figcaption class="figure-caption text-left">🍺 Coolship Red by Allagash Brewing Company</figcaption>
-                                              
-                    </figure>
-
-                    <figure class="figure profile">
-                        <img class="circle" src="../static/img/CathyEgboh.jpg" alt="Avatar" height="200" width="200">
-                        <br>
-                        <h4><b>Cathy Egboh</b></h4>
-                        <a href="https://www.linkedin.com/in/catherine-egboh-36400b104/" class="fa fa-lg fa-linkedin"></a>
-                        <a href="#https://github.com/CatEggs" class="fa fa-lg fa-github"></a>
-                        <figcaption class="figure-caption text-left">🍺 Revolver Blood and Honey</figcaption>
-                        <figcaption class="figure-caption text-left">🍺 Austin Amber</figcaption>
-                    </figure>
-                    
-
-                    <figure class="figure profile">
-                        <img class="circle" src="../static/img/team/MayaSaeidi.jpg" alt="Avatar" height="200" width="200">
-                        <br>
-                        <h4><b>Maya Saeidi</b></h4>
-                        <a href="https://www.linkedin.com/in/maya-saeidi/" class="fa fa-lg fa-linkedin"></a>
-                        <a href="https://github.com/S-Maya" class="fa fa-lg fa-github"></a>
-                        <figcaption class="figure-caption text-left"><h>🍺 Corona Extra</h></figcaption>
-                        <figcaption class="figure-caption text-left"><h>🍺 Heineken</h></figcaption>
-                        <figcaption class="figure-caption text-left"><h>🍺 Guinness</h></figcaption>
-                    </figure>
-                   
-                  
-                    
-  
-            <div class="row white align-items-center main style3 primary">
-                <figure class="figure profile">
-                    <img class="circle" src="../static/img/MichelleBrucato.jpg" alt="Avatar" height="200" width="200">
-                    <br>
-                    <h4><b>Michelle Brucato</b></h4>
-                    <a href="https://www.linkedin.com/in/michelle-brucato/" class="fa fa-lg fa-linkedin"></a>
-                    <a href="https://github.com/michellebrucato" class="fa fa-lg fa-github"></a>
-                    <figcaption class="figure-caption text-left"><h>🍺 Victory Sour Monkey</h></figcaption>
-                    <figcaption class="figure-caption text-left"><h>🍺 Pinthouse Electric Jellyfish</h></figcaption>
-                </figure>
-                  
-            
-                <figure class="figure profile">
-                    <img class="circle" src="../static/img/SaharMohammadi.jpg" alt="Avatar" height="200" width="200">
-                    <br>
-                    <h4><b>Sahar Mohammadi</b></h4>
-                    <a href="https://www.linkedin.com/in/sahar-mohammadi-1425691a3/" class="fa fa-lg fa-linkedin"></a>
-                    <a href="https://github.com/sahar3267" class="fa fa-lg fa-github"></a>
-                    <figcaption class="figure-caption text-left"><h>🍺 Pilsner</h></figcaption>
-                    <figcaption class="figure-caption text-left"><h>🍺 American Amber</h></figcaption>
-                    <figcaption class="figure-caption text-left"><h>🍺 Heineken</h></figcaption>
-                </figure>
-                    
-
-                <figure class="figure profile">
-                    <img class="circle" src="../static/img/SheetalBongale.jpg" alt="Avatar" height="200" width="200">
-                    <br>
-                    <h4><b>Sheetal Bongale</b></h4>
-                    <a href="https://www.linkedin.com/in/sheetal-bongale/" class="fa fa-lg fa-linkedin"></a>
-                    <a href="https://github.com/sheetalbongale" class="fa fa-lg fa-github"></a>
-                    <figcaption class="figure-caption text-left"><h>🍺 Karbach Hopadillo IPA</h></figcaption>
-                    <figcaption class="figure-caption text-left"><h>🍺 Fat Tire Amber Ale</h></figcaption>
-                    <figcaption class="figure-caption text-left"><h>🍺 Deschutes Fresh Squeezed IPA</h></figcaption>
-                </figure>
             </div>
-                <!-- col-lg col-md-6 -->
-            </div>
-        </div>
-    </section>
-
+        </section>  
+                  
     <h2 class="align-items-center centered">What's your favorite beer or beerstyle?🍺 Tell us!</h2>
     <!-- begin wwww.htmlcommentbox.com -->
     <div id="HCB_comment_box" style="padding-left: 10%; padding-right: 10%;"><a href="http://www.htmlcommentbox.com"></a> is loading comments...</div>
