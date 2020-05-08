@@ -2480,7 +2480,7 @@ input, select, textarea {
 		text-align: left;
 		font-weight: bold;
 		font-size: 1.5em;
-		opacity: 0.85;
+		opacity: 1.0;
 	}
 
 	.table-recommend th,
