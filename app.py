@@ -13,12 +13,10 @@ from surprise import dump
 
 # Path to dump files and name
 dumpfile_knn = os.path.join('./data/dump/dump_knn_dump_file')
-dumpfile_svd = os.path.join('./data/dump/dump_svd_dump_file')
 beer_pickel_path = os.path.join('./data/dump/beer_final.pkl')
 
 # Load dump files
 predictions_knn,algo_knn = dump.load(dumpfile_knn)
-predictions_svd,algo_svd = dump.load(dumpfile_svd)
 beers_df = pd.read_pickle(beer_pickel_path)
 
 # Create the trainset from the knn_algorithm in order to get the inner_ids
