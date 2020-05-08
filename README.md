@@ -65,7 +65,8 @@ The goal of the ALE-gorithm web application & dashboard is to educate consumers 
 ### Features
 🟡<b> Beer Recommender:</b>
 Are you a beer connoisseur? Or even new to the #beerlife experience? No matter what your level of expertise is, if you love to partake in a nice "cold one", then check out the recommender page. 
-We have scanned over a million beers and will match you to the top beers that best suit your palette.
+We have scanned over a million beers and will match you to the top beers that best suit your palette.  ALE-gorithm will recommend
+your next beer in two ways using a custom recommender model built with Surprise!.  See below for more details!
 
 🟡<b> Dashboard:</b>
 Want to learn more about your favorite beers? 
@@ -76,14 +77,24 @@ Looking for a fun beer night or taste some new craft beers? Search to find all t
 
 ### Technologies used to build ALE-gorithm:
 ```
-- App Back-End: Python Flask | SQLAlchemy
+- App Back-End: Python Flask | SQLAlchemy | scikit-Surprise
 - Database: MySQL | Google Cloud Platform (GCP) 
 - Data Visualization: Javascript | Plotly.js | D3.js | AnyChart.js
 - Front-End: HTML | Bootstrap | CSS
 - Web-Scraping: Requests, Beautiful Soup
 - Testing: Postman
 ```
+### More about the Machine Learning Algorithms used in this project:
+ALE-gorithm utilizes machine learning to create recommendations for beers based upon user reviews.  In the first project,  a simple sorting algorithm was utilized to suggest the top five beers for a user based upon the category and style of beer and the beer’s average overall score.  ALE-gorithm 2 personalizes the recommendation based upon the unique inputs of each user by using the KNNBasic model with Surprise ((http://surpriselib.com/), a Python scikit focused on creating recommender systems.
 
+In order to create the model,  the original dataset of over 8 million reviews had to be substantially reduced.  Pandas was utilized to randomly sample 4 million reviews and then only beers that had at least 500 reviews were selected.  This reduced the dataset to 1.2M reviews with 1182 beers from 271 different breweries.
+
+Surprise was then used to evaluate and develop a model that could accurately predict the rating for each user.  Several prediction algorithms were evaluated including KNNBasic, SVD, SlopeOne, and CoClustering.  KNNBasic was selected for its overall prediction accuracy as measured by root mean square error (RMSE) in addition to mean absolute error (MAE) and its ability to predict similarity of items (beers).  The similarity prediction was optimized by comparing the output of the cosine, pearson, and pearson_baseline similarity measures and selecting the measure that returned beers that were most alike in terms of style, brewery, and rating.  Pearson_baseline was found to produce the best results.
+
+There are two models used to recommend your next beer.  The first utilizes the similarity model in Surprise to return the five nearest neighbors for a given beer.  In practical terms, this prediction is similar to the commonly found recommenders online that will suggest a similar item to a consumer’s selection.
+
+The second model predicts the rating for all 1182 beers in the dataset for a given user and then returns the top 10 highest predicted ratings and the bottom 10 predicted ratings utilizing collaborative filtering k-Nearest Neighbor (KNN).  This is a customized recommendation for any user in the database and a great way for a user to find their next perfect beer!
+```
 ### Deployment:
 ALE-gorithm is deployed on GCP.
 
