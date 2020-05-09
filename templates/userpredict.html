@@ -28,53 +28,51 @@
 
     <!-- Nav-Bar Header - Copy paste for every page-->
     <header id="header">
-            <h1>
-                <a href="index.html">
+        <h1>
+            <a href="index.html">
                     <img src="../static/img/logo.png" style="width: 15%; position: fixed;">
                 </a>
-            </h1>
-            <nav class="navbar navbar-expand-md navbar-fixed-top">
-                
-                <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        </h1>
+        <nav class="navbar navbar-expand-md navbar-fixed-top">
+
+            <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>  
                 </button>
-               
-                <div class="collapse navbar-collapse navbar-toggleable-xs" id="navbarColor01">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                            data-toggle="dropdown"><i class="fa fa-beer"></i> Beer Recommender &nbsp;</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="knnrecommender.html">Beer Finder &nbsp;</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="userpredict.html"> Personalized Predictor &nbsp;</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button"
-                            data-toggle="dropdown"><i class="fa fa-th"></i> Beer Analysis &nbsp;</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="educator.html">Beer Educator &nbsp;</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="dashboard.html">More About Beers &nbsp;</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class= "nav-link" href="breweries.html">
+
+            <div class="collapse navbar-collapse navbar-toggleable-xs" id="navbarColor01">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"><i class="fa fa-beer"></i> Beer Recommender &nbsp;</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="knnrecommender.html">Beer Finder &nbsp;</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="userpredict.html"> Personalized Predictor &nbsp;</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button" data-toggle="dropdown"><i class="fa fa-th"></i> Beer Analysis &nbsp;</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <a class="dropdown-item" href="recommender.html">Beer Educator &nbsp;</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="dashboard.html">More About Beers &nbsp;</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="breweries.html">
                                 <i class="fa fa-search"></i> Find Breweries &nbsp;</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class= "nav-link" href="index.html#team">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#team">
                                 <i class="fa fa-user"></i> About Us &nbsp;</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
     <!-- Banner - Main Selection Page-->
     <section id="predictorpage" class="main style3 primary">
@@ -82,36 +80,37 @@
             <div class="container-fluid">
                 <header>
                     <br>
-                    <h2 class="align-items-center centered">Welcome to Ale-gorithm <br> The Personalized Beer Recommender</h2>
+                    <h2 class="align-items-center centered" style="color: rgb(0, 0, 0);">Welcome to Ale-gorithm <br> The Personalized Beer Recommender</h2>
                     <hr>
-                    <p>Let Our Collaborative Filtering ALE-gorithm Predict How You Would Rate Some Beers!</p>
+
+                    <p style="color: rgb(0, 0, 0);">Let Our Collaborative Filtering ALE-gorithm Predict How You Would Rate Some Beers!</p>
+
                     <br>
                     <ul class="actions special"></ul>
                         <li>
-                        <button class="dropdown-toggle custom-select button secondary" type="button" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select Your Username
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">tamu94</a>
-                            <a class="dropdown-item" href="#">michellebrucato</a>
-                            <a class="dropdown-item" href="#">sheetalbongale</a>
-                        </div>
-                    </li>
-                </ul>
-
-
-
-                    <section id="beerrecommendation">
-                            <!-- Top 10 Beer Recommendations - Table -->
-                            <div class="container-fluid table-recommend" style="padding-left: 30px; padding-right: 30px;">
-                                <div class="row" id="top10"></div>
+                            <button class="dropdown-toggle user-toggle custom-select button secondary" type="button" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Select a Username  <span class="selected"></span>
+                                <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu user-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">tamu94</a>
+                                <a class="dropdown-item" href="#">michellebrucato</a>
+                                <a class="dropdown-item" href="#">sheetalbongale</a>
                             </div>
-                    </section>
-                    
-                </header>
-            </div>
+                        </li>
+                    </ul>
+
+    <!-- personalized beer predictor - TABLE --> 
+    <section id="beerpredict">
+        <!-- Top 10 Beer Recommendations - Table -->
+        <div class="container-fluid table-recommend" style="padding-left: 30px; padding-right: 30px;">
+            <div class="row" style="color: rgb(0, 0, 0);"  id="top10"></div>
         </div>
     </section>
+
+    </header>
+    </div>
+</section>
 
 
     <!-- Footer -->
@@ -140,12 +139,6 @@
     <!-- Custom scripts for this template -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <!-- Anychart -->
-    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js?hcode=c11e6e3cfefb406e8ce8d99fa8368d33"></script>
-    <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js?hcode=c11e6e3cfefb406e8ce8d99fa8368d33"></script>
-    <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js?hcode=c11e6e3cfefb406e8ce8d99fa8368d33"></script>
-    <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js?hcode=c11e6e3cfefb406e8ce8d99fa8368d33"></script>
-    <script src="https://cdn.anychart.com/releases/v8/js/anychart-data-adapter.min.js?hcode=c11e6e3cfefb406e8ce8d99fa8368d33"></script>
     <!-- Local Scripts -->
     <script src="../static/js/jquery.min.js"></script>
     <script src="../static/js/jquery.poptrox.min.js"></script>
@@ -155,14 +148,12 @@
     <script src="../static/js/breakpoints.min.js"></script>
     <script src="../static/js/util.js"></script>
     <script src="../static/js/main.js"></script>
-    <script src="../static/js/buildRecommender.js"></script>
-    <script src="../static/js/buildCloud.js"></script>
     <script src="../static/js/userpredict.js"></script>
+    <!-- jQuery for dropdown menu-->
     <script>
-
-        $('.dropdown-menu a').on('click', function(){    
-    $('.dropdown-toggle').html($(this).html());    
-})
+    $('.user-menu a').on('click', function(){    
+    $('.user-toggle').html($(this).html());    
+    })
     </script>
 
 </body>
