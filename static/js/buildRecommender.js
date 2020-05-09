@@ -219,9 +219,10 @@ function drawGaugeSRM(beerstyle) {
 
 // Function to create the description section for beerstyle
 function buildCharts(beerstyle){
-    
+        
     d3.json(`/beerstyle/${beerstyle}`).then(data => data.forEach(e => {
         console.log(data)
+
         let cardBody = d3.select("#description")
             .append("div")
             .classed("card", true)
@@ -266,16 +267,27 @@ function buildCharts(beerstyle){
             }))
 
 
-        };
-    
-            
+        };   
 
 
     // Function to display top 5 beers
     function buildRecommender(beerstyle){
+
+        let topHead = d3.select('#beertext')
+            .append("h2")
+            .classed("title text-center", true) 
+    
+        topHead.text("Good Choice! Learn more about this Beer Style")
+
+        let botHead = d3.select('#texttop5')
+            .append("h2")
+            .classed("title text-center", true) 
+
+        botHead.text("Top 5 Beers based on your selection. Cheers!")
     
         d3.json(`/recommender/${beerstyle}`).then(data => data.forEach(e => {
             console.log(data)
+
             let cardBody = d3.select("#top5")
                 .append("div")
                 .classed("card", true)
@@ -338,10 +350,13 @@ function optionChangedOne(newCategory) {
 function optionChangedTwo(newBeerstyle) {
     beerstyle = newBeerstyle;
     console.log(beerstyle);
-    d3.select('#description').html(""),
+
     buildCharts(beerstyle);
+    d3.select('#description').html(""),
     d3.select('#beerimage').html(""),
     buildImage(beerstyle);
+    d3.select('#texttop5').html(""),
+    d3.select('#beertext').html(""),
     d3.select('#top5').html(""),
     buildRecommender(beerstyle);
 
