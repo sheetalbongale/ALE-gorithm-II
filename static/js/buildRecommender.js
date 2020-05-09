@@ -276,7 +276,7 @@ function buildCharts(beerstyle){
         let topHead = d3.select('#beertext')
             .append("h2")
             .classed("title text-center", true) 
-    
+
         topHead.text("Good Choice! Learn more about this Beer Style")
 
         let botHead = d3.select('#texttop5')
@@ -284,7 +284,7 @@ function buildCharts(beerstyle){
             .classed("title text-center", true) 
 
         botHead.text("Top Beers based on your selection. Cheers!")
-    
+
         d3.json(`/recommender/${beerstyle}`).then(data => data.forEach(e => {
             console.log(data)
 
