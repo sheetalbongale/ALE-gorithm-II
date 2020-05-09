@@ -274,7 +274,7 @@ function buildCharts(beerstyle){
     // Function to display top 5 beers
     function buildRecommender(beerstyle){
     
-        d3.json(`/recommender/${beerstyle}`).then(data => data.forEach(e => {
+        d3.json(`/educator/${beerstyle}`).then(data => data.forEach(e => {
             console.log(data)
             let cardBody = d3.select("#top5")
                 .append("div")
