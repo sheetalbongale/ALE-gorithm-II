@@ -19,116 +19,104 @@
 	   </noscript>
 	   <!-- Hero CSS file -->
 	   <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital@1&display=swap" rel="stylesheet">
-   
-	   <!-- Anychart -->
-	   <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css?hcode=c11e6e3cfefb406e8ce8d99fa8368d33" type="text/css" rel="stylesheet">
-	   <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css?hcode=c11e6e3cfefb406e8ce8d99fa8368d33" type="text/css" rel="stylesheet">
-   
+
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<style type="text/css">
-	.st0{fill:#F9CF68;}
-	body{
-	background-color: #fffaea;
-}
-​
-.contain{
-	height: 300px;
-	width: 300px;
-	left: 70%;
-	top: 60%;
-	position: absolute;
-	transform: translatex(-40%) translatey(-20%);
-	svg{
-		vertical-align: top;
-		width: 100%;
+	<style>
+		body{
+			background-color: #fffaea;
+		}
+		
+		.contain{
+			height: 400px;
+			width: 400px;
+			left: 50%;
+			top: 50%;
+			position: absolute;
+			transform: translatex(-50%) translatey(-50%);
+		}
+		.svg{
+				vertical-align: top;
+				width: 100%;
+		}
 		.beer{
-			animation-name: empty;
-			animation-fill-mode: forwards;
-			animation-duration: 4s;
-			animation-timing-function: linear;
-			fill: #F9CF68;
+					animation-name: empty;
+					animation-fill-mode: forwards;
+					animation-duration: 4s;
+					animation-timing-function: linear;
+					fill: #F9CF68;
+				}
+
+		@keyframes empty{
+			0%{
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+			} 
+			30%{
+				clip-path: polygon(0 16%, 100% 12%, 100% 100%, 0% 100%);
+			}
+			50%{
+				clip-path: polygon(0 40%, 100% 44%, 100% 100%, 0% 100%);
+			}
+			70%{
+				clip-path: polygon(0 69%, 100% 66%, 100% 100%, 0% 100%);
+			}
+			100%{
+				clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+			}
 		}
-	}
-}
-.beer{
-			animation-name: empty;
-			animation-fill-mode: forwards;
-			animation-duration: 4s;
-			animation-timing-function: linear;
-			fill: #F9CF68;
-		}
-@keyframes empty{
-	0%{
-		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-	}
-	30%{
-		clip-path: polygon(0 16%, 100% 12%, 100% 100%, 0% 100%);
-	}
-	50%{
-		clip-path: polygon(0 40%, 100% 44%, 100% 100%, 0% 100%);
-	}
-	70%{
-		clip-path: polygon(0 69%, 100% 66%, 100% 100%, 0% 100%);
-	}
-	100%{
-		clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
-	}
-}
-</style>
+		</style>
 </head>
 ​<body class="is-preload">
 
-    <!-- Nav-Bar Header - Copy paste for every page-->
-    <header id="header">
-        <h1>
-            <a href="index.html">
-                <img src="../static/img/logo.png" style="width: 15%; position: fixed;">
-            </a>
-        </h1>
-        <nav class="navbar navbar-expand-md navbar-fixed-top">
-            
-            <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>  
-            </button>
-           
-            <div class="collapse navbar-collapse navbar-toggleable-xs" id="navbarColor01">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                        data-toggle="dropdown"><i class="fa fa-beer"></i> Beer Recommender &nbsp;</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="knnrecommender.html">Beer Finder &nbsp;</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="userpredict.html"> Personalized Predictor &nbsp;</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button"
-                        data-toggle="dropdown"><i class="fa fa-th"></i> Beer Analysis &nbsp;</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                            <a class="dropdown-item" href="educator.html">Beer Educator &nbsp;</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="dashboard.html">More About Beers &nbsp;</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class= "nav-link" href="breweries.html">
-                            <i class="fa fa-search"></i> Find Breweries &nbsp;</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class= "nav-link" href="index.html#team">
-                            <i class="fa fa-user"></i> About Us &nbsp;</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
+<!-- Nav-Bar Header - Copy paste for every page-->
+<header id="header">
+	<h1>
+		<a href="#intro">
+			<img src="../static/img/logo.png" style="width: 15%; position: fixed;">
+		</a>
+	</h1>
+	<nav class="navbar navbar-expand-md navbar-fixed-top">
+		
+		<button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>  
+		</button>
+	   
+		<div class="collapse navbar-collapse navbar-toggleable-xs" id="navbarColor01">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item dropdown ">
+					<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+					data-toggle="dropdown"><i class="fa fa-beer"></i> Beer Recommender &nbsp;</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="knnrecommender.html">Beer Finder &nbsp;</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="userpredict.html"> Personalized Predictor &nbsp;</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button"
+					data-toggle="dropdown"><i class="fa fa-th"></i> Beer Analysis &nbsp;</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+						<a class="dropdown-item" href="educator.html">Beer Educator &nbsp;</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="dashboard.html">More About Beers &nbsp;</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class= "nav-link" href="breweries.html">
+						<i class="fa fa-search"></i> Find Breweries &nbsp;</a>
+				</li>
+				<li class="nav-item">
+					<a class= "nav-link" href="index.html#team">
+						<i class="fa fa-user"></i> About Us &nbsp;</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</header>
 
 <div class="contain" id="animate">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -183,23 +171,6 @@
 ​
 ​
 </div>
-<!-- Footer -->
-<footer id="footer">
-	<!-- GitHub -->
-	<ul class="icons">
-		<li>
-			<a href="https://github.com/sheetalbongale/ALE-gorithm" class="fa fa-lg fa-github"></a>
-		</li>
-		<li>Git-Hub Repository</li>
-	</ul>
-
-	<ul class="menu">
-		<li>&copy; Ale-gorithm 2020</li>
-		<li>Group 3</li>
-		<li>UT Data Analysis and Visualization Bootcamp</a>
-		</li>
-	</ul>
-</footer>
 
 <!-- Scripts -->
 <!-- JavaScript Libraries -->
@@ -225,10 +196,6 @@
 <script src="../static/js/breakpoints.min.js"></script>
 <script src="../static/js/util.js"></script>
 <script src="../static/js/main.js"></script>
-<script src="../static/js/drawMap.js"></script>
-<script src="../static/js/drawBar.js"></script>
-<script src="../static/js/drawScatter.js"></script>
-<script src="../static/js/buildCloud.js"></script>
-<script src="../static/js/buildDashboard.js"></script>
+
 </body>
 </html>
