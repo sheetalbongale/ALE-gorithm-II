@@ -151,7 +151,7 @@ def guagechart(beerstyle):
 
 
 # route to display top 5 beer recommendations
-@app.route("/educator/<beerstyle>")
+@app.route("/recommender/<beerstyle>")
 def selector(beerstyle):
     TABLENAME1 = "top_5_beers"
     TABLENAME2 = "final_beers"
@@ -313,3 +313,5 @@ def predict_user_rating():
 ################################################################
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
+
+  
