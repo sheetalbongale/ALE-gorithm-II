@@ -2302,7 +2302,7 @@ input, select, textarea {
 	  }
 
 	#predictorpage {
-		background-image: url('../img/background5.jpg');
+		background-image: url('../img/BeerExplosion.gif');
 		background-size: cover;
 		background-attachment: fixed, fixed;
 		background-position: top;
@@ -2467,7 +2467,7 @@ input, select, textarea {
 	.table-recommend {
 		margin: 25px 0;
 		font-size: 0.9em;
-		min-width: 400px;
+		min-width: 500px;
 		border-radius: 5px 5px 0 0;
 		overflow: hidden;
 		box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
