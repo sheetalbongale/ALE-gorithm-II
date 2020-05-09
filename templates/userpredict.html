@@ -86,11 +86,11 @@
                     <br>
                     <ul class="actions special">
                         <li>
-                            <button class="dropdown-toggle custom-select button secondary" type="button" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="dropdown-toggle user-toggle custom-select button secondary" type="button" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Select a Username  <span class="selected"></span>
                                 <span class="caret"></span>
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div class="dropdown-menu user-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#">tamu94</a>
                                 <a class="dropdown-item" href="#">michellebrucato</a>
                                 <a class="dropdown-item" href="#">sheetalbongale</a>
@@ -149,8 +149,8 @@
     <script src="../static/js/userpredict.js"></script>
     <!-- jQuery for dropdown menu-->
     <script>
-    $('.dropdown-menu a').on('click', function(){    
-    $('.dropdown-toggle').html($(this).html());    
+    $('.user-menu a').on('click', function(){    
+    $('.user-toggle').html($(this).html());    
     })
     </script>
 
