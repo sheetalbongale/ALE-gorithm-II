@@ -2462,12 +2462,12 @@ input, select, textarea {
 			margin-right: auto;
 		}
 
-				/* Recommender Table */
+	/* Recommender Table */
 
 	.table-recommend {
 		margin: 25px 0;
 		font-size: 0.9em;
-		min-width: 500px;
+		min-width: 400px;
 		border-radius: 5px 5px 0 0;
 		overflow: hidden;
 		box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -2480,8 +2480,9 @@ input, select, textarea {
 		text-align: left;
 		font-weight: bold;
 		font-size: 1.5em;
-		opacity: 1.0;
+		opacity: 0.85;
 	}
+			
 
 	.table-recommend th,
 	.table-recommend td {

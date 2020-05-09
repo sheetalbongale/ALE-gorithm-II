@@ -86,11 +86,11 @@
                     <br>
                     <ul class="actions special">
                         <li>
-                            <button class="dropdown-toggle custom-select button secondary" type="button" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="dropdown-toggle user-menu custom-select button secondary" type="button" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Select a Username  <span class="selected"></span>
                                 <span class="caret"></span>
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div class="dropdown-menu user-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#">tamu94</a>
                                 <a class="dropdown-item" href="#">michellebrucato</a>
                                 <a class="dropdown-item" href="#">sheetalbongale</a>
@@ -101,7 +101,7 @@
     <!-- personalized beer predictor - TABLE --> 
     <section id="beerpredict">
         <!-- Top 10 Beer Recommendations - Table -->
-        <div class="container-fluid table-recommend" style="padding-left: 30px; padding-right: 30px;">
+        <div class="container-fluid table-recommend" style="padding-left: 20px; padding-right: 20px;">
             <div class="row" style="color: rgb(0, 0, 0);"  id="top10"></div>
         </div>
     </section>
@@ -149,8 +149,8 @@
     <script src="../static/js/userpredict.js"></script>
     <!-- jQuery for dropdown menu-->
     <script>
-    $('.dropdown-menu a').on('click', function(){    
-    $('.dropdown-toggle').html($(this).html());    
+    $('.dropdown-menu user-menu a').on('click', function(){    
+    $('.dropdown-toggle user-menu').html($(this).html());    
     })
     </script>
 
