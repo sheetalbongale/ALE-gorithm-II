@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, jsonify
 import sqlalchemy as sql
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
-import config
 import pymysql
 import json
 import pandas as pd
@@ -25,9 +24,7 @@ trainset_knn = algo_knn.trainset
 
 
 def get_beer_brewery(beer_raw_id):
-    beer_brewery = beers_df.loc[beers_df.beer_id == beer_raw_id, "beer_brewery"].values[
-        0
-    ]
+    beer_brewery = beers_df.loc[beers_df.beer_id == beer_raw_id, "beer_brewery"].values[0]
     return beer_brewery
 
 
@@ -78,19 +75,13 @@ def get_beer_recc_df(beer_raw_id):
 
 
 ################################################################
-#               Flask Setup                                    #
+#               Flask Setup and Database Connection            #
 ################################################################
 app = Flask(__name__)
 
-USER = "root"
-PASSWORD = config.password
-HOST = "127.0.0.1"
-PORT = "3306"
-DATABASE = "alegorithm_db"
+SQLALCHEMY_DATABASE_URL = os.getenv("DB_CONN")
 
-CONN = f"mysql+pymysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
-
-sql_engine = sql.create_engine(CONN)
+sql_engine = sql.create_engine(SQLALCHEMY_DATABASE_URL)
 
 ################################################################
 #                        Flask Routes                          #
@@ -250,9 +241,8 @@ def state_stat(state):
 def breweries():
     return render_template("breweries.html")
 
-
 # --------------------------------------------------------------#
-#                       recommender model routes                #
+#                       Recommender model routes                #
 # --------------------------------------------------------------#
 
 # Route returns the beer;brewery to populate the dropdown
@@ -263,10 +253,8 @@ def recommender_selector():
     beers.append("Choose a Beer")
     return render_template("knnrecommender.html", beers=beers)
 
-
-@app.route(
-    "/neighbors/<beer_name>"
-)  # Beer_name is beer;brewery format to match the search route
+# Beer_name is beer;brewery format to match the search route
+@app.route("/neighbors/<beer_name>")  
 def nearest_neighbors(beer_name):
     beer_raw_id = get_beer_raw_id(beer_name)
     df = get_beer_recc_df(beer_raw_id)
@@ -280,11 +268,8 @@ def nearest_neighbors(beer_name):
 @app.route("/predict", methods=["POST"])
 def predict():
     data_dict = request.get_json()
-
     username = data_dict["username"]
-    beer_name = data_dict[
-        "beer"
-    ]  # Beer_name is beer;brewery format to match the search route
+    beer_name = data_dict["beer"]  
     beer_raw_id = get_beer_raw_id(beer_name)
     predict = algo_knn.predict(username, beer_raw_id)
     df_predict = pd.DataFrame(
@@ -327,4 +312,4 @@ def predict_user_rating():
 #                           Main                               #
 ################################################################
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
