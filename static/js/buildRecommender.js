@@ -283,7 +283,7 @@ function buildCharts(beerstyle){
             .append("h2")
             .classed("title text-center", true) 
 
-        botHead.text("Top 5 Beers based on your selection. Cheers!")
+        botHead.text("Top Beers based on your selection. Cheers!")
     
         d3.json(`/recommender/${beerstyle}`).then(data => data.forEach(e => {
             console.log(data)

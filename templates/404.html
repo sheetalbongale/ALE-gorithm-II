@@ -10,7 +10,7 @@
 	   <!-- Bootstrap CSS File -->
 	   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/flatly/bootstrap.min.css">
 	   <!-- Main Stylesheet File -->
-	   <link rel="stylesheet" href="../static/css/main.css" />
+	   <link rel="stylesheet" href="../static/css/main.css"/>
 	   <!-- Font-awesome  -->
 	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	   <!-- No Script CSS  -->
@@ -28,12 +28,12 @@
 		}
 		
 		.contain{
-			height: 400px;
-			width: 400px;
-			left: 50%;
-			top: 50%;
-			position: absolute;
-			transform: translatex(-50%) translatey(-50%);
+			height: 500;
+			width: 500px;
+			left: 40%;
+			top: 60%;
+			bottom: auto;
+			position: relative;
 		}
 		.svg{
 				vertical-align: top;
@@ -42,8 +42,9 @@
 		.beer{
 					animation-name: empty;
 					animation-fill-mode: forwards;
-					animation-duration: 4s;
+					animation-duration: 5s;
 					animation-timing-function: linear;
+					animation-iteration-count: infinite;
 					fill: #F9CF68;
 				}
 
@@ -117,7 +118,7 @@
 		</div>
 	</nav>
 </header>
-
+<section id="page404">
 <div class="contain" id="animate">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 320.9 277.3" style="enable-background:new 0 0 320.9 277.3;" xml:space="preserve">
@@ -168,9 +169,26 @@
 	c-3.6,0-7.2-0.1-10.8-0.3c-3.6-0.2-7.2-0.4-10.8-0.9c-3.6-0.4-7.2-1-10.7-1.7c-1.8-0.4-3.5-0.8-5.3-1.4c-0.9-0.3-1.7-0.6-2.5-1
 	C70.4,250.2,69.5,249.8,69,249z"/>
 </svg>
-​
-​
 </div>
+</section>
+​
+<!-- Footer - Copy paste for every page -->
+<footer id="footer">
+	<!-- GitHub -->
+	<ul class="icons">
+		<li>
+			<a href="https://github.com/sheetalbongale/ALE-gorithm-II" class="fa fa-lg fa-github"></a>
+		</li>
+		<li><a href="https://github.com/sheetalbongale/ALE-gorithm-II">GitHub</li></a>
+	</ul>
+	<ul class="menu">
+		<li>&copy; Ale-gorithm 2020</li>
+		<li>Project 2</li>
+		<li>UT Data Analysis and Visualization Bootcamp</a>
+		</li>
+	</ul>
+</footer>
+
 
 <!-- Scripts -->
 <!-- JavaScript Libraries -->
