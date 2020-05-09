@@ -3,6 +3,12 @@
 // Function to display top 10 beer recommenders using KNN model
 function buildKNNRecommender(beer_name){
 
+    let topHead = d3.select('#top10text')
+        .append("h2")
+        .classed("title text-center", true) 
+
+    topHead.text("We're confident you'll enjoy the following beers. Drink Up!")
+
     // Initialize counter to 0
     var count = 0;
     
@@ -64,6 +70,7 @@ function optionChangedFour(newBeer) {
     beer_name = newBeer;
     console.log(beer_name)
 
+    d3.select('#top10text').html(""),
     d3.select('#top5neighbors').html(""),
     d3.select('#next5neighbors').html(""),
     buildKNNRecommender(beer_name);
