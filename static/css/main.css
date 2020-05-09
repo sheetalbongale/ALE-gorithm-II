@@ -2305,7 +2305,7 @@ input, select, textarea {
 		background-image: url('../img/BeerExplosion.gif');
 		background-size: cover;
 		background-attachment: fixed, fixed;
-		background-position: top;
+		background-position: bottom;
 		
 	  }
 
@@ -2462,7 +2462,7 @@ input, select, textarea {
 			margin-right: auto;
 		}
 
-	/* Recommender Table */
+				/* Recommender Table */
 
 	.table-recommend {
 		margin: 25px 0;
@@ -2480,9 +2480,8 @@ input, select, textarea {
 		text-align: left;
 		font-weight: bold;
 		font-size: 1.5em;
-		opacity: 0.85;
+		opacity: 1.0;
 	}
-			
 
 	.table-recommend th,
 	.table-recommend td {
