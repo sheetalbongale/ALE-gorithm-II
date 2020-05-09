@@ -117,14 +117,14 @@ def invalid_route(e):
 # --------------------------------------------------------------#
 
 
-@app.route("/recommender.html")
-def recommender():
+@app.route("/educator.html")
+def educator():
     TABLENAME = "ba_beerstyles"
     query = f"SELECT DISTINCT Category FROM {TABLENAME}"
     df = pd.read_sql_query(query, sql_engine)
     categories = df["Category"].tolist()
     categories.append("Choose a Category")
-    return render_template("recommender.html", categories=categories)
+    return render_template("educator.html", categories=categories)
 
 
 # populate beerstyle dropdown - * Needs work(Dynamic Dropdown) *
@@ -160,7 +160,7 @@ def guagechart(beerstyle):
 
 
 # route to display top 5 beer recommendations
-@app.route("/recommender/<beerstyle>")
+@app.route("/educator/<beerstyle>")
 def selector(beerstyle):
     TABLENAME1 = "top_5_beers"
     TABLENAME2 = "final_beers"
